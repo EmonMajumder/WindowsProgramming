@@ -8,8 +8,7 @@
       d:DesignHeight="350" d:DesignWidth="500"
       Title="ExpenseIt - Home">
 
-    <Grid Margin="0,10,10,10" HorizontalAlignment="Right" Width="480">
-        
+    <Grid Margin="0,10,10,10" HorizontalAlignment="Right" Width="480">        
         <Grid.Background>
             <ImageBrush ImageSource="watermark.png"  />
         </Grid.Background>
