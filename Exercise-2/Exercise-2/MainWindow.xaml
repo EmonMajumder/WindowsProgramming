@@ -20,9 +20,11 @@
             <Setter Property="FontSize" Value="32"></Setter>
         </Style>
         <Style TargetType="Button">
+            
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="FontSize" Value="32"></Setter>
+            
         </Style>
     </Window.Resources>
     <Window.CommandBindings>
