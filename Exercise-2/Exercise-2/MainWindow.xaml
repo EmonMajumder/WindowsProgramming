@@ -32,6 +32,7 @@
     </Window.CommandBindings>
     <Grid>
         <StackPanel>
+            
             <Menu>
                 <MenuItem Header="Edit">
                     <MenuItem Command="ApplicationCommands.Copy"></MenuItem>
@@ -44,6 +45,7 @@
             <Button Command="ApplicationCommands.Paste">Paste Button</Button>
             <TextBox x:Name="SourceTextbox">Source</TextBox>
             <TextBox x:Name="TargetTextbox">Target</TextBox>
+            
         </StackPanel>       
     </Grid>
 </Window>
