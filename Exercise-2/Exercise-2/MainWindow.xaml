@@ -24,7 +24,12 @@
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="FontSize" Value="32"></Setter>
         </Style>
-    </Window.Resources> 
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Copy" CanExecute="CopyCommandBinding_CanExecute" Executed="CopyCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Paste" CanExecute="PasteCommandBinding_CanExecute" Executed="PasteCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="CutCommandBinding_CanExecute" Executed="CutCommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
     <Grid>
         <StackPanel>
             <Menu>
@@ -37,10 +42,8 @@
             <Button Command="ApplicationCommands.Copy">Copy Button</Button>
             <Button Command="ApplicationCommands.Cut">Cut Button</Button>
             <Button Command="ApplicationCommands.Paste">Paste Button</Button>
-        </StackPanel>
-        <StackPanel Height="300">
             <TextBox x:Name="SourceTextbox">Source</TextBox>
             <TextBox x:Name="TargetTextbox">Target</TextBox>
-        </StackPanel>
+        </StackPanel>       
     </Grid>
 </Window>

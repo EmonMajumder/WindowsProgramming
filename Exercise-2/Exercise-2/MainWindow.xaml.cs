@@ -24,5 +24,32 @@ namespace Exercise_2
         {
             InitializeComponent();
         }
+
+        private void CopyCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = (SourceTextbox != null) && (SourceTextbox.SelectionLength > 0);
+        }
+        private void CopyCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            SourceTextbox.Copy();
+        }
+
+        private void CutCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = (SourceTextbox != null) && (SourceTextbox.SelectionLength > 0);
+        }
+        private void CutCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            SourceTextbox.Cut();
+        }
+
+        private void PasteCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Clipboard.ContainsText();
+        }
+        private void PasteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            TargetTextbox.Paste();
+        }
     }
 }
