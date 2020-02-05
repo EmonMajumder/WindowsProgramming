@@ -9,14 +9,14 @@
       Title="ExpenseIt - Home">
 
     <Grid Margin="0,10,10,10" HorizontalAlignment="Right" Width="480">
-
+        
         <Grid.Resources>
-
+            
             <!-- Name item template -->
             <DataTemplate x:Key="nameItemTemplate">
                 <Label Content="{Binding XPath=@Name}"/>
             </DataTemplate>
-
+            
             <!-- Expense Report Data -->
             <XmlDataProvider x:Key="ExpenseDataSource" XPath="Expenses">
                 <x:XData>
@@ -43,7 +43,7 @@
                 </x:XData>
             </XmlDataProvider>
         </Grid.Resources>
-
+        
         <Grid.Background>
             <ImageBrush ImageSource="watermark.png"  />
         </Grid.Background>
