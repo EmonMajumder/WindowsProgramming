@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mp3Player"
         mc:Ignorable="d"
-        Title="Mp3 Media Player" Width="400" Height="315">
+        Title="Mp3 Media Player" Width="400" Height="332">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" CanExecute="Open_CanExecute" Executed="Open_Executed" />
