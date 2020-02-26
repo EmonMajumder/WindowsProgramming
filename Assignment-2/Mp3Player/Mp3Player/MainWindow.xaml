@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mp3Player"
         mc:Ignorable="d"
-        Title="Mp3 Media Player" Width="500">
+        Title="Mp3 Media Player" Width="400" Height="Auto">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" CanExecute="Open_CanExecute" Executed="Open_Executed" />
@@ -55,7 +55,7 @@
                 </Button>
                 <Separator/>
                 <Separator/>
-                <Button Grid.Row="1" Command="ApplicationCommands.Open">
+                <Button Grid.Row="1" Click="EditSong_Click">
                     <Image Source="C:\WPF App\Assignment-2\images\edit.png"/>
                 </Button>
                 <Separator/>
@@ -67,6 +67,65 @@
 
             <MediaElement Name="mePlayer" Height="Auto" Grid.Column="1" LoadedBehavior="Manual"/>
             <Image Name="songImage" Grid.Column="1"/>
+
+            <Border Name="EditSongInfo" Grid.Column="1" Margin="10,56,74,48" Visibility="Visible" Width="Auto" Height="Auto" RenderTransformOrigin="0.5,0.5">
+                <WrapPanel>
+                    <Grid Width="244">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Background="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="etitle" Grid.Row="0"></TextBlock>
+                                <TextBlock Name="eartist" Grid.Row="1"></TextBlock>
+                                <TextBlock Name="ealbum" Grid.Row="2"></TextBlock>
+                                <TextBlock Name="eyear" Grid.Row="3"></TextBlock>
+                            </Grid>
+
+                            <TextBlock Grid.Column="1" Name="editblank" Background="White"></TextBlock>
+
+                            <Grid Grid.Column="2" Background="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBox Name="editsongTitle" Grid.Row="0" Width="50"></TextBox>
+                                <TextBox Name="editsongArtist" Grid.Row="1" Width="50"></TextBox>
+                                <TextBox Name="editsongAlbum" Grid.Row="2" Width="50"></TextBox>
+                                <TextBox Name="editsongYear" Grid.Row="3" Width="50"></TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,10,0,0">
+                            <Grid HorizontalAlignment="Right">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" HorizontalAlignment="Right" Content="Save" Click="Save_Click"/>
+                                <TextBlock Text="  " Grid.Column="1"/>
+                                <Button Grid.Column="2" HorizontalAlignment="Right" Content="Cancel"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </WrapPanel>
+            </Border>
 
             <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,0,0,10" Width="223" Height="67">
                 <WrapPanel Width="Auto" Height="Auto">
@@ -91,7 +150,7 @@
                         </Grid>
 
                         <TextBlock Grid.Column="1" Name="blank" Background="White"></TextBlock>
-                        
+
                         <Grid Grid.Column="2" Background="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -104,8 +163,8 @@
                             <TextBlock Name="songAlbum" Grid.Row="2"></TextBlock>
                             <TextBlock Name="songYear" Grid.Row="3"></TextBlock>
                         </Grid>
-                        
-                    </Grid>                    
+
+                    </Grid>
                 </WrapPanel>
             </Border>
         </Grid>

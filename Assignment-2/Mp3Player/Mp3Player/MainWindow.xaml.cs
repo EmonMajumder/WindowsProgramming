@@ -26,6 +26,7 @@ namespace Mp3Player
     {
         private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
+        private OpenFileDialog openFileDialog = new OpenFileDialog();
 
         public MainWindow()
         {
@@ -53,8 +54,7 @@ namespace Mp3Player
         }
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+        {            
             openFileDialog.Filter = "Media files (*.mp3;*.mpg;*.mpeg)|*.mp3;*.mpg;*.mpeg|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
@@ -104,7 +104,6 @@ namespace Mp3Player
         private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             mePlayer.Pause();
-            Get_ArtistName();
         }
 
         private void Stop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -139,13 +138,38 @@ namespace Mp3Player
             mePlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
         }
 
-        private void Get_ArtistName()
+        private void EditSong_Click(object sender, RoutedEventArgs e)
+        {           
+            etitle.Text = "Title";           
+            eartist.Text = "Artist";
+            ealbum.Text = "Album";
+            eyear.Text = "Year";
+            editblank.Text = " ";
+
+            try
+            {
+                var file = TagLib.File.Create(openFileDialog.FileName); // Change file path accordingly.
+                editsongTitle.Text = file.Tag.Title;
+                editsongArtist.Text = file.Tag.FirstPerformer;
+                editsongAlbum.Text = file.Tag.Album;
+                editsongYear.Text = file.Tag.Year.ToString();
+
+                EditSongInfo.Visibility = Visibility.Visible;
+            }
+            catch(Exception err)
+            {
+
+            }
+            
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
-            var file = TagLib.File.Create("<C:\\Users\\Student\\Downloads\\Shopnodisto.mp3>"); // Change file path accordingly.
-
-            file.Tag.Year = 1993;
-
-            // Save Changes:
+            var file = TagLib.File.Create(openFileDialog.FileName); // Change file path accordingly.
+            file.Tag.Title = editsongTitle.Text;
+            file.Tag.Performers[0] = editsongArtist.Text;
+            file.Tag.Album = editsongAlbum.Text;
+            file.Tag.Year = Convert.ToUInt32(editsongYear.Text);
             file.Save();
         }
     }
