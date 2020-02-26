@@ -31,7 +31,7 @@ namespace Mp3Player
         public MainWindow()
         {
             InitializeComponent();
-
+            UC1.UCButtonClicked += new EventHandler(Hide_Click);
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
@@ -144,8 +144,8 @@ namespace Mp3Player
         }
 
         private void EditSong_Click(object sender, RoutedEventArgs e)
-        {           
-            etitle.Text = "Title";           
+        {
+            etitle.Text = "Title";
             eartist.Text = "Artist";
             ealbum.Text = "Album";
             eyear.Text = "Year";
@@ -162,11 +162,11 @@ namespace Mp3Player
                 EditSongInfo.Visibility = Visibility.Visible;
                 ShowSongInfo();
             }
-            catch(Exception err)
+            catch (Exception err)
             {
-                Errormsg.Text = "Error !!!";
+                UC1.Errormsg.Text = "Error !!!";                
                 MyPopup.IsOpen = true;
-            }            
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -183,22 +183,21 @@ namespace Mp3Player
             }
             catch(Exception err)
             {
-                Errormsg.Text = "Could not Save changes.";
+                UC1.Errormsg.Text = "Could not Save changes.";
                 MyPopup.IsOpen = true;
             }
             
             EditSongInfo.Visibility = Visibility.Hidden;
         }
 
+        private void Hide_Click(object sender, EventArgs e)
+        {           
+            MyPopup.IsOpen = false;
+        }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             EditSongInfo.Visibility = Visibility.Hidden;
-        }
-
-        private void Hide_Click(object sender, RoutedEventArgs e)
-        {
-            MyPopup.IsOpen = false;
-        }       
+        }             
     }
 }
