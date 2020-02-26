@@ -60,29 +60,34 @@ namespace Mp3Player
             {
                 mePlayer.Source = new Uri(openFileDialog.FileName);
 
-                var file = TagLib.File.Create(openFileDialog.FileName); // Change file path accordingly.
-                songTitle.Text = file.Tag.Title;
-                songArtist.Text = file.Tag.FirstPerformer;
-                songAlbum.Text = file.Tag.Album;
-                songYear.Text = file.Tag.Year.ToString();
-
-                title.Text = "Title";
-                artist.Text = "Artist";
-                album.Text = "Album";
-                year.Text = "Year";
-                blank.Text = " ";
-
-                MemoryStream ms = new MemoryStream(file.Tag.Pictures[0].Data.Data);
-                ms.Seek(0, SeekOrigin.Begin);
-
-                // ImageSource for System.Windows.Controls.Image
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.StreamSource = ms;
-                bitmap.EndInit();
-
-                songImage.Source = bitmap;
+                ShowSongInfo();
             }                
+        }
+
+        private void ShowSongInfo()
+        {
+            var file = TagLib.File.Create(openFileDialog.FileName); // Change file path accordingly.
+            songTitle.Text = file.Tag.Title;
+            songArtist.Text = file.Tag.FirstPerformer;
+            songAlbum.Text = file.Tag.Album;
+            songYear.Text = file.Tag.Year.ToString();
+
+            title.Text = "Title";
+            artist.Text = "Artist";
+            album.Text = "Album";
+            year.Text = "Year";
+            blank.Text = " ";
+
+            MemoryStream ms = new MemoryStream(file.Tag.Pictures[0].Data.Data);
+            ms.Seek(0, SeekOrigin.Begin);
+
+            // ImageSource for System.Windows.Controls.Image
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.StreamSource = ms;
+            bitmap.EndInit();
+
+            songImage.Source = bitmap;
         }
 
         private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -155,22 +160,45 @@ namespace Mp3Player
                 editsongYear.Text = file.Tag.Year.ToString();
 
                 EditSongInfo.Visibility = Visibility.Visible;
+                ShowSongInfo();
             }
             catch(Exception err)
             {
-
-            }
-            
+                Errormsg.Text = "Error !!!";
+                MyPopup.IsOpen = true;
+            }            
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            var file = TagLib.File.Create(openFileDialog.FileName); // Change file path accordingly.
-            file.Tag.Title = editsongTitle.Text;
-            file.Tag.Performers[0] = editsongArtist.Text;
-            file.Tag.Album = editsongAlbum.Text;
-            file.Tag.Year = Convert.ToUInt32(editsongYear.Text);
-            file.Save();
+            try
+            {
+                var file = TagLib.File.Create(openFileDialog.FileName); // Change file path accordingly.
+                file.Tag.Title = editsongTitle.Text;
+                file.Tag.Performers[0] = editsongArtist.Text;
+                file.Tag.Album = editsongAlbum.Text;
+                file.Tag.Year = Convert.ToUInt32(editsongYear.Text);
+                file.Save();
+                ShowSongInfo();
+            }
+            catch(Exception err)
+            {
+                Errormsg.Text = "Could not Save changes.";
+                MyPopup.IsOpen = true;
+            }
+            
+            EditSongInfo.Visibility = Visibility.Hidden;
         }
+
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            EditSongInfo.Visibility = Visibility.Hidden;
+        }
+
+        private void Hide_Click(object sender, RoutedEventArgs e)
+        {
+            MyPopup.IsOpen = false;
+        }       
     }
 }
