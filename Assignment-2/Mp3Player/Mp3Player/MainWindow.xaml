@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mp3Player"
         mc:Ignorable="d"
-        Title="Mp3 Media Player" Width="400" Height="332">
+        Title="Mp3 Media Player" Width="390" Height="435">
 
     <Window.Resources>
 
@@ -54,7 +54,7 @@
         <CommandBinding Command="MediaCommands.Stop" CanExecute="Stop_CanExecute" Executed="Stop_Executed" />
     </Window.CommandBindings>
 
-    <Grid MouseWheel="Grid_MouseWheel">
+    <Grid MouseWheel="Grid_MouseWheel" Margin="0,0,0,5">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -74,11 +74,11 @@
         <Menu Height="20">
             <MenuItem Header="File">
                 <MenuItem Command="ApplicationCommands.Open" Header="Open Mp3"></MenuItem>
-                <MenuItem Command="ApplicationCommands.Cut" Header="Tag Current MP3"></MenuItem>
-                <MenuItem Command="ApplicationCommands.Copy" Header="Exit"></MenuItem>
+                <MenuItem Name="TagCurrentMP3" Click="ShowDescription_Click" Header="Tag Current MP3"></MenuItem>
+                <MenuItem Click="Exit_Click" Header="Exit"></MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Edit"/>
+            <MenuItem Name="Edit" Header="Edit" Click="EditSong_Click"/>
 
             <MenuItem Header="Media">
                 <MenuItem Command="MediaCommands.Play"></MenuItem>
@@ -87,7 +87,7 @@
             </MenuItem>
         </Menu>
 
-        <Grid Grid.Row="1" Height="Auto" Margin="0,0,0,10">
+        <Grid Grid.Row="1" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -103,27 +103,31 @@
                     <Image Source="C:\WPF App\Assignment-2\images\open_file.png"/>
                 </Button>
 
-                <Button Grid.Row="1" Click="EditSong_Click">
-                    <Image Source="C:\WPF App\Assignment-2\images\edit.png"/>
-                </Button>
-
-                <Button Grid.Row="3" Command="ApplicationCommands.Open">
+                <Button Grid.Row="1" Command="ApplicationCommands.Open">
                     <Image Source="C:\WPF App\Assignment-2\images\musicnote.png"/>
                 </Button>
+
+                <Button Grid.Row="2" Name="Editwithpic" Click="EditSong_Click">
+                    <Image Source="C:\WPF App\Assignment-2\images\edit.png"/>
+                </Button>
+                
             </Grid>
 
             <MediaElement Name="mePlayer" Height="Auto" Grid.Column="1" LoadedBehavior="Manual"/>
-            <Image Name="songImage" Grid.Column="1"/>
+            <Image Name="songImage" Grid.Column="1" Height="300" Width="300"/>
 
-            <Border Name="EditSongInfo" Grid.Column="1" Visibility="Visible" Background="White" HorizontalAlignment="Left" Width="250" Margin="5,50,0,0" VerticalAlignment="Top">
+            <Border Name="EditSongInfo" Grid.Column="1" Visibility="Hidden" Background="White" HorizontalAlignment="Left" Width="250" Margin="5,50,0,0" VerticalAlignment="Top">
                 <WrapPanel>
                     <Grid MinWidth="250">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Margin="5">
+                        <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Arial">Tag Editor</TextBlock>
+
+                        <Grid Grid.Row="1" Margin="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -164,7 +168,7 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1" HorizontalAlignment="Right">
+                        <Grid Grid.Row="2" HorizontalAlignment="Right">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
@@ -214,7 +218,7 @@
             </Border>
         </Grid>
 
-        <StatusBar Grid.Row="2" Height="50">
+        <StatusBar Grid.Row="2" VerticalAlignment="Bottom">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
