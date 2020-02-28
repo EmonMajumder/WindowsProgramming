@@ -72,11 +72,10 @@ namespace Mp3Player
             songAlbum.Text = file.Tag.Album;
             songYear.Text = file.Tag.Year.ToString();
 
-            title.Text = "Title";
-            artist.Text = "Artist";
-            album.Text = "Album";
-            year.Text = "Year";
-            blank.Text = " ";
+            //title.Text = "Title";
+            //artist.Text = "Artist";
+            //album.Text = "Album";
+            //year.Text = "Year";
 
             MemoryStream ms = new MemoryStream(file.Tag.Pictures[0].Data.Data);
             ms.Seek(0, SeekOrigin.Begin);
@@ -88,6 +87,8 @@ namespace Mp3Player
             bitmap.EndInit();
 
             songImage.Source = bitmap;
+
+            Description.Visibility = Visibility.Visible;
         }
 
         private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -148,8 +149,7 @@ namespace Mp3Player
             etitle.Text = "Title";
             eartist.Text = "Artist";
             ealbum.Text = "Album";
-            eyear.Text = "Year";
-            editblank.Text = " ";
+            eyear.Text = "Year";            
 
             try
             {
