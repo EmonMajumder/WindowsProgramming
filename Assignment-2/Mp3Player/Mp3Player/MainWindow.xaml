@@ -63,12 +63,7 @@
         </Grid.RowDefinitions>
 
         <Popup Name="MyPopup" Placement="Mouse" HorizontalOffset="-100" VerticalOffset="-200" >
-            <local:UserControl1 x:Name="UC1"/>
-            <!--<Grid>
-                <Rectangle Width="300" Height="150" Fill="White"/>
-                <TextBlock Name="Errormsg" Text="Could not Save changes." Margin="53"/>
-                <Button Click="Hide_Click" Margin="95,102,96,10">Ok</Button>
-            </Grid>-->
+            <local:UserControl1 x:Name="UC1"/>            
         </Popup>
 
         <Menu Height="20">
@@ -181,26 +176,7 @@
             </Border>
 
             <Border Name ="Description" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Background="{StaticResource TransparentBlack}" Visibility="Hidden">
-                <WrapPanel Width="Auto" Height="Auto">
-                    <!--<Grid HorizontalAlignment="Right" Margin="5,5,10,5">-->
-                    <!--<Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>                            
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>-->
-
-                    <!--<Grid Grid.Column="0" MinWidth="30" Margin="5,5,5,5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock Name="title" Grid.Row="0" ></TextBlock>
-                            <TextBlock Name="artist" Grid.Row="1" ></TextBlock>
-                            <TextBlock Name="album" Grid.Row="2" ></TextBlock>
-                            <TextBlock Name="year" Grid.Row="3" ></TextBlock>
-                        </Grid>-->
-
+                <WrapPanel Width="Auto" Height="Auto">                   
                     <Grid Grid.Column="1" Margin="5,5,10,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -212,8 +188,7 @@
                         <TextBlock Name="songArtist" Grid.Row="1" Style="{StaticResource Common}"></TextBlock>
                         <TextBlock Name="songAlbum" Grid.Row="2" Style="{StaticResource Common}"></TextBlock>
                         <TextBlock Name="songYear" Grid.Row="3" Style="{StaticResource Common}"></TextBlock>
-                    </Grid>
-                    <!--</Grid>-->
+                    </Grid>                    
                 </WrapPanel>
             </Border>
         </Grid>
