@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Exercise_5.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Exercise_5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="860">
+
+    <Grid>
+        <StackPanel>
+            <Grid Margin="0,50,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="FirstName" FontSize="50" Margin="160,0,0,0"/>
+                <TextBox Text="{Binding FirstName}" FontSize="50" Margin="470,0,65,0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Grid>
+
+            <Grid Margin="0,50,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="LastName" FontSize="50" Margin="160,0,0,0" />
+                <TextBox Text="{Binding LastName}" FontSize="50" Margin="470,0,65,0" Grid.ColumnSpan="2"/>
+            </Grid>
+
+            <Grid Margin="0,50,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="BirthDate" FontSize="50" Margin="160,0,0,0" />
+                <TextBox Text="{Binding BirthDate}" FontSize="50" Margin="470,0,65,0" Grid.ColumnSpan="2"/>
+            </Grid>
+
+            <Grid Margin="0,50,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Email" FontSize="50" Margin="160,0,0,0" />
+                <TextBox Text="{Binding Email}" FontSize="50" Margin="470,0,65,0" Grid.ColumnSpan="2"/>
+            </Grid>
+
+
+        </StackPanel>
+
+    </Grid>
+</Page>
