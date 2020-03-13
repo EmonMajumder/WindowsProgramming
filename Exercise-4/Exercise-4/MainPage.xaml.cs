@@ -27,11 +27,11 @@ namespace Exercise_4
             this.InitializeComponent();
         }
 
-        private async void Button_ClickAsync(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             MediaElement mediaElement = new MediaElement();
             var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("Hello, World!");
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("Hello, User!");
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
         }

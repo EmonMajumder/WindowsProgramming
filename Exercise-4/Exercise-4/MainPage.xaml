@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="button" Content="Hello, world!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+        <Button x:Name="button" Content="Hello, user!" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
     </Grid>
 </Page>
